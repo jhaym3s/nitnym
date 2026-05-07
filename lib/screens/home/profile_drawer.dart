@@ -35,7 +35,9 @@ class ProfileDrawer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _DrawerAvatar(),
+                      GestureDetector(
+                        onTap: onNavigateProfile,
+                        child: _DrawerAvatar()),
                       const SizedBox(height: 8),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

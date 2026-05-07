@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:mintyn/core/images.dart';
 import '../../core/constants.dart';
 
 class QuickActionButton extends StatefulWidget {
