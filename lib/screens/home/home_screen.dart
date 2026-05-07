@@ -52,6 +52,22 @@ class _HomeScreenState extends State<HomeScreen>
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppColors.scaffold,
+      appBar: AppBar(
+        backgroundColor: Color(0xFF272729),
+        leading: GestureDetector(
+          onTap: () => _scaffoldKey.currentState?.openDrawer(),
+          child: Container(
+            width: 38,
+            height: 38,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+            ),
+            child: const Icon(Icons.menu_rounded,
+                color: AppColors.textPrimary, size: 20),
+          ),
+        ),
+        title: _buildTopBar(),
+      ),
       drawer: ProfileDrawer(
         onNavigateCard: () {
           Navigator.pop(context);
@@ -65,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen>
       body: SafeArea(
         child: Column(
           children: [
-            _buildTopBar(),
+           // _buildTopBar(),
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -73,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 48),
                     _buildBalanceCard(),
                     const SizedBox(height: 32),
                     _buildQuickActions(),
@@ -95,22 +111,13 @@ class _HomeScreenState extends State<HomeScreen>
       child: SlideTransition(
         position: _headerSlide,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 14),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: () => _scaffoldKey.currentState?.openDrawer(),
-                child: Container(
-                  width: 38,
-                  height: 38,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppSizes.radiusSm),
-                  ),
-                  child: const Icon(Icons.menu_rounded,
-                      color: AppColors.textPrimary, size: 20),
-                ),
+              SizedBox(
+                width: 38,
+               
               ),
-              const Spacer(),
               BlocBuilder<BankingBloc, BankingState>(
                 buildWhen: (p, c) => p.user.name != c.user.name,
                 builder: (_, state) => RichText(
