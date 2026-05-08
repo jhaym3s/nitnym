@@ -20,5 +20,6 @@ then run `flutter run`
 # Demo
 https://github.com/user-attachments/assets/ed89877f-c33b-4bd2-be4c-fe2f055775a5
 
+# FULL DEMO
 https://github.com/user-attachments/assets/36289b73-c601-4259-abec-1151e38a0f57
 
