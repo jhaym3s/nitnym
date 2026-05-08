@@ -155,11 +155,16 @@ class _HomeScreenState extends State<HomeScreen>
         buildWhen: (p, c) =>
             p.user.totalBalance != c.user.totalBalance ||
             p.isLoading != c.isLoading,
-        builder: (context, state) => HomeBalanceCard(
-          balance: state.user.totalBalance,
-          isLoading: state.isLoading,
-          onAddCash: () {},
-          onSendMoney: () {},
+        builder: (context, state) => GestureDetector(
+          onTap: () {
+          pushScreen(context, const CardScreen());
+          },
+          child: HomeBalanceCard(
+            balance: state.user.totalBalance,
+            isLoading: state.isLoading,
+            onAddCash: () {},
+            onSendMoney: () {},
+          ),
         ),
       ),
     );

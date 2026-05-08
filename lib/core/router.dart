@@ -8,7 +8,7 @@ Future<T?> pushScreen<T>(BuildContext context, Widget screen) {
       pageBuilder: (_, __, ___) => screen,
       transitionDuration: AppDurations.page,
       reverseTransitionDuration: AppDurations.page,
-      transitionsBuilder: (_, animation, __, child) {
+      transitionsBuilder: (_, animation, _, child) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(1.0, 0.0),
@@ -32,7 +32,7 @@ Future<T?> pushUpScreen<T>(BuildContext context, Widget screen) {
       pageBuilder: (_, __, ___) => screen,
       transitionDuration: AppDurations.page,
       reverseTransitionDuration: AppDurations.page,
-      transitionsBuilder: (_, animation, __, child) {
+      transitionsBuilder: (_, animation, _, child) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(0.0, 1.0),
