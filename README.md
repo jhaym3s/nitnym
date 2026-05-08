@@ -5,6 +5,7 @@
 Make sure you have the following installed before cloning the project
 - Flutter
 - X-CODE
+- Android Studio
 
 # Set up 
 git clone the repo https://github.com/jhaym3s/nitnym.git 
