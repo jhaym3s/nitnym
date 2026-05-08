@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mintyn/core/dimensions.dart';
 import '../../core/constants.dart';
 
 class AppToggle extends StatefulWidget {
@@ -55,22 +56,22 @@ class _AppToggleState extends State<AppToggle>
       child: AnimatedBuilder(
         animation: _ctrl,
         builder: (_, __) => Container(
-          width: w,
-          height: h,
+          width: w.dx,
+          height: h.dy,
           decoration: BoxDecoration(
             color: _trackColor.value,
-            borderRadius: BorderRadius.circular(h / 2),
+            borderRadius: BorderRadius.circular(h.dy / 2),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(padding),
+            padding: EdgeInsets.all(padding.dx),
             child: Stack(
               children: [
                 Positioned(
-                  left: _thumbPos.value * (w - thumb - padding * 2),
+                  left: _thumbPos.value * (w.dx - thumb.dx - padding.dx * 2),
                   top: 0,
                   child: Container(
-                    width: thumb,
-                    height: thumb,
+                    width: thumb.dx,
+                    height: thumb.dy,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -108,27 +109,27 @@ class SettingsRow extends StatelessWidget {
       onTap: onTap ??
           (toggleValue != null ? () => onToggle?.call(!toggleValue!) : null),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 10.dx, vertical: 8.dy),
         decoration: BoxDecoration(
           color: Color(0xff232325),
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(6.dx),
         ),
         child: Row(
           children: [
             CircleAvatar(
-              radius: 20,
+              radius: 20.dx,
               backgroundColor: Color(0xFF272729),
-              child: SvgPicture.asset(icon, width: 24, height: 24),
+              child: SvgPicture.asset(icon, width: 24.dx, height: 24.dx),
               ),
-            const SizedBox(width: 14),
+            SizedBox(width: 14.dx),
             Expanded(
               child: Text(label, style: AppTextStyles.body17),
             ),
             if (toggleValue != null)
               AppToggle(value: toggleValue!, onChanged: onToggle)
             else
-              const Icon(Icons.chevron_right_rounded,
-                  color: AppColors.textPrimary, size: 20),
+              Icon(Icons.chevron_right_rounded,
+                  color: AppColors.textPrimary, size: 20.dx),
           ],
         ),
       ),

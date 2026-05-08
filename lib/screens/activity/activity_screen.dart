@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/images.dart';
 import '../../blocs/banking/banking_bloc.dart';
 import '../../core/constants.dart';
@@ -24,24 +25,24 @@ class _ActivityScreenState extends State<ActivityScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+              padding: EdgeInsets.fromLTRB(20.dx, 16.dy, 20.dx, 0),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      width: 38,
-                      height: 38,
+                      width: 38.dx,
+                      height: 38.dx,
                       decoration: BoxDecoration(
                         color: AppColors.surfaceElevated,
                         borderRadius:
                             BorderRadius.circular(AppSizes.radiusSm),
                       ),
-                      child: const Icon(Icons.arrow_back_ios_new_rounded,
-                          color: AppColors.textPrimary, size: 18),
+                      child: Icon(Icons.arrow_back_ios_new_rounded,
+                          color: AppColors.textPrimary, size: 18.dx),
                     ),
                   ),
-                  const SizedBox(width: 14),
+                  SizedBox(width: 14.dx),
                   const Text('My Activity', style: AppTextStyles.headingLg),
                   const Spacer(),
                   const Icon(Icons.more_horiz_rounded,
@@ -49,7 +50,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.dy),
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -57,13 +58,13 @@ class _ActivityScreenState extends State<ActivityScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildChartCard(),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.dy),
                     _buildRecentTransfers(),
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24.dy),
                     Divider(color: AppColors.border, height: 1),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16.dy),
                     _buildTransactionHistory(),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32.dy),
                   ],
                 ),
               ),
@@ -80,21 +81,21 @@ class _ActivityScreenState extends State<ActivityScreen> {
           p.user.totalBalance != c.user.totalBalance ||
           p.monthlySpending != c.monthlySpending,
       builder: (_, state) => Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.symmetric(horizontal: 20.dx),
         decoration: BoxDecoration(
-          border: Border.all(color:Color(0xFF272729), width: 1.5),
+          border: Border.all(color:Color(0xFF272729), width: 1.5.dx),
           borderRadius: BorderRadius.circular(AppSizes.radiusLg),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding:  EdgeInsets.fromLTRB(14, 22, 14, 20),
+              padding:  EdgeInsets.fromLTRB(14.dx, 22.dy, 14.dx, 20.dy),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                      color: Color(0xFF272729), width: 1.5),
+                      color: Color(0xFF272729), width: 1.5.dx),
                 ),
               ),
               child: Column(
@@ -104,7 +105,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       style: AppTextStyles.body22.copyWith(
                         color: Color(0xFFE9E9EA)
                       )),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.dy),
                   TweenAnimationBuilder<double>(
                     tween:
                         Tween(begin: 0, end: state.user.totalBalance),
@@ -115,7 +116,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       style: AppTextStyles.headingLg,
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.dy),
                   _ActivityFilterTabs(
                     selected: _activeTabIndex,
                     onChanged: (i) =>
@@ -125,13 +126,13 @@ class _ActivityScreenState extends State<ActivityScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 16.dy, 0, 0),
               child: SpendingChart(
                 data: state.monthlySpending,
                 labels: const [
                   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'
                 ],
-                height: 391,
+                height: 391.dy,
               ),
             ),
           ],
@@ -141,12 +142,6 @@ class _ActivityScreenState extends State<ActivityScreen> {
   }
 
   Widget _buildRecentTransfers() {
-    final colors = [
-      Color(0xFFFFCD66),
-      Color(0xFFCEF2E7),
-      Color(0xFFA5A7FF),
-      Color(0xFFFF5722),
-    ];
     final images = [
       ImageAssets.avatar,
       ImageAssets.avatar1,
@@ -154,12 +149,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
       ImageAssets.avatar3,
     ];
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.dx),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 18),
+        padding: EdgeInsets.symmetric(vertical: 16.dy, horizontal: 18.dx),
         decoration: BoxDecoration(
           color: Color(0xff232325),
-          border: Border.all(color: AppColors.border, width: 1),
+          border: Border.all(color: AppColors.border, width: 1.dx),
           borderRadius: BorderRadius.circular(AppSizes.radiusLg),
         ),
         child: Row(
@@ -170,17 +165,17 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 children: [
                   const Text('Recent Transfer',
                       style: AppTextStyles.body22),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.dy),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         children: List.generate(4, (i) {
                           return Transform.translate(
-                            offset: Offset(i * -8.0, 0),
+                            offset: Offset(i * -8.0.dx, 0),
                             child: Container(
-                              width: 42,
-                              height: 42,
+                              width: 42.dx,
+                              height: 42.dx,
                               decoration: BoxDecoration(
                                 image:  DecorationImage(
                                   image: AssetImage(images[i % images.length]),
@@ -188,7 +183,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                                 ),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                    color: AppColors.textPrimary, width: 2),
+                                    color: AppColors.textPrimary, width: 2.dx),
                               ),
                            
                             ),
@@ -196,14 +191,14 @@ class _ActivityScreenState extends State<ActivityScreen> {
                         }),
                       ),
                       Container(
-              width: 36,
-              height: 36,
+              width: 36.dx,
+              height: 36.dx,
               decoration: BoxDecoration(
                 color: AppColors.surfaceElevated,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.add_rounded,
-                  color: Color(0xFF96C0FF), size: 20),
+              child: Icon(Icons.add_rounded,
+                  color: Color(0xFF96C0FF), size: 20.dx),
             ),
                     ],
                   ),
@@ -223,7 +218,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
       builder: (_, state) {
         final txs = state.transactions;
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.dx),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -236,7 +231,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                       style: AppTextStyles.bodySm.copyWith(color: Color(0xFF6BA6FF))),
                 ],
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.dy),
               ...txs.asMap().entries.map(
                     (e) => TransactionItem(
                       transaction: e.value,
@@ -269,13 +264,13 @@ class _ActivityFilterTabs extends StatelessWidget {
           onTap: () => onChanged(i),
           child: AnimatedContainer(
             duration: AppDurations.fast,
-            padding: const EdgeInsets.symmetric(
-                horizontal: 14, vertical: 6),
+            padding: EdgeInsets.symmetric(
+                horizontal: 14.dx, vertical: 6.dy),
             decoration: BoxDecoration(
               color: Color(0xff272729),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.dx),
               border: isSel
-                  ? Border.all(color: AppColors.primary, width: 1.5)
+                  ? Border.all(color: AppColors.primary, width: 1.5.dx)
                   : null,
             ),
             child: Text(

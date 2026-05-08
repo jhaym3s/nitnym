@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:mintyn/core/dimensions.dart';
 import '../../core/constants.dart';
 import '../../models/transaction_model.dart';
 
@@ -24,18 +25,18 @@ class TransactionItem extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
+            padding: EdgeInsets.symmetric(vertical: 12.dy),
             child: Row(
               children: [
                 GradientBorderCircleButton(icon: transaction.icon,),
-                const SizedBox(width: 14),
+                SizedBox(width: 14.dx),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(transaction.title,
                           style: AppTextStyles.body17),
-                      const SizedBox(height: 6),
+                      SizedBox(height: 6.dy),
                       Text(_formatDateTime(transaction.dateTime),
                           style: AppTextStyles.small13),
                     ],
@@ -128,10 +129,10 @@ class GradientBorderCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: EdgeInsets.all(5.dx),
       child: Container(
-        width: 52,
-        height: 52,
+        width: 52.dx,
+        height: 52.dx,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: const LinearGradient(
@@ -144,7 +145,7 @@ class GradientBorderCircleButton extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(1.5), 
+          padding: EdgeInsets.all(1.5.dx), 
           child: Container(
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
@@ -153,8 +154,8 @@ class GradientBorderCircleButton extends StatelessWidget {
             child: Center(
               child: SvgPicture.asset(
                 icon,
-                width: 24,
-                height: 24,
+                width: 24.dx,
+                height: 24.dx,
                
             ),
           ),

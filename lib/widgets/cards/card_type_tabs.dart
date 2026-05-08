@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/constants.dart';
 import 'package:mintyn/models/bank_card_model.dart';
 
@@ -15,18 +16,18 @@ class CardTypeTabs extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: Color(0xff232323),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(22.dx),
           ),
           child: _TypeTab(
               label: 'Physical Card',
               isSelected: selected == CardType.physical,
               onTap: () => onChanged(CardType.physical)),
         ),
-        const SizedBox(width: 20),
+        SizedBox(width: 20.dx),
         Container(
           decoration: BoxDecoration(
             color: Color(0xff232323),
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(22.dx),
           ),
           child: _TypeTab(
               label: 'Virtual Card',
@@ -52,9 +53,9 @@ class _TypeTab extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: AppDurations.normal,
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 9),
+        padding: EdgeInsets.symmetric(horizontal: 18.dx, vertical: 9.dy),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(26),
+          borderRadius: BorderRadius.circular(26.dx),
           border: isSelected
               ? Border.all(color: AppColors.primary, width: 1.5)
               : null,

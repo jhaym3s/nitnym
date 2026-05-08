@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/images.dart';
 import 'package:mintyn/widgets/common/gradient_border.dart';
 import '../../core/constants.dart';
@@ -65,7 +66,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
               child: _NoiseTexture(),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20.dx),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -74,13 +75,13 @@ class _BankCardWidgetState extends State<BankCardWidget>
                     children: [
                       Row(children: [
                         _ChipIcon(),
-                        const SizedBox(width: 16),
-                        SvgPicture.asset(ImageAssets.tapPay, width: 18, height: 18,),
+                        SizedBox(width: 16.dx),
+                        SvgPicture.asset(ImageAssets.tapPay, width: 18.dx, height: 18.dy,),
                       ]),
-                      SvgPicture.asset(ImageAssets.mastercard, width: 28, height: 21),
+                      SvgPicture.asset(ImageAssets.mastercard, width: 28.dx, height: 21.dy),
                     ],
                   ),
-                  const SizedBox(height: 14),
+                  SizedBox(height: 14.dy),
                   Text(
                     _buildCardNumber(),
                     style: AppTextStyles.body11.copyWith(
@@ -100,7 +101,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                       ),
                       _CardField(
                           label: 'Valid', value: widget.card.validDate),
-                      const SizedBox(width: 16),
+                      SizedBox(width: 16.dx),
                       _CardField(
                         label: 'CVV',
                         value: widget.isRevealed ? widget.card.cvv : '•••',
@@ -119,9 +120,9 @@ class _BankCardWidgetState extends State<BankCardWidget>
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.ac_unit_rounded,
-                            color: Colors.lightBlueAccent, size: 36),
-                        const SizedBox(height: 8),
+                        Icon(Icons.ac_unit_rounded,
+                            color: Colors.lightBlueAccent, size: 36.dx),
+                        SizedBox(height: 8.dy),
                         Text('Card Frozen',
                             style: AppTextStyles.bodyMdMedium),
                       ],
@@ -168,7 +169,7 @@ class _CardField extends StatelessWidget {
         Text(label,
             style: AppTextStyles.smallXs
                 .copyWith(color: Color(0xffBCBCBD))),
-        const SizedBox(height: 2),
+         SizedBox(height: 2.dy),
         Text(value,
             style: AppTextStyles.smallSmMedium
                 .copyWith(color: Colors.white,)),
@@ -181,18 +182,18 @@ class _ChipIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 30,
-      height: 22,
+      width: 30.dx,
+      height: 22.dy,
       decoration: BoxDecoration(
         color: const Color(0xFFD4AA70),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(4.dx),
         gradient: const LinearGradient(
           colors: [Color(0xFFFFC690), Color(0xFFFFCFA3),Color(0xFFFFCEA1)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
       ),
-     child: SvgPicture.asset(ImageAssets.chip, width: 30, height: 22, )
+     child: SvgPicture.asset(ImageAssets.chip, width: 30.dx, height: 22.dy, )
     );
   }
 }

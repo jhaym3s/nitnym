@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mintyn/core/dimensions.dart';
 import '../../core/constants.dart';
 
 class QuickActionButton extends StatefulWidget {
@@ -50,22 +51,19 @@ class _QuickActionButtonState extends State<QuickActionButton>
       onTapCancel: () => _ctrl.forward(),
       child: ScaleTransition(
         scale: _ctrl,
-        child: SizedBox(
-          width: 72,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                radius: 21,
-                backgroundColor: AppColors.surfaceElevated,
-                child: widget.icon,
-              ),
-              const SizedBox(height: 8),
-              Text(widget.label,
-                  style: AppTextStyles.bodyLarge,
-                  textAlign: TextAlign.center),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CircleAvatar(
+              radius: 21.dx,
+              backgroundColor: AppColors.surfaceElevated,
+              child: widget.icon,
+            ),
+            SizedBox(height: 12.dy),
+            Text(widget.label,
+                style: AppTextStyles.bodyLarge,
+                textAlign: TextAlign.center),
+          ],
         ),
       ),
     );
@@ -107,7 +105,10 @@ class _PrimaryActionButtonState extends State<PrimaryActionButton>
   }
 
   @override
-  void dispose() => _ctrl.dispose();
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,8 +122,8 @@ class _PrimaryActionButtonState extends State<PrimaryActionButton>
       child: ScaleTransition(
         scale: _ctrl,
         child: Container(
-          height: 48,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          height: 48.dy,
+          padding: EdgeInsets.symmetric(horizontal: 20.dx),
           decoration: BoxDecoration(
             color: widget.color ?? AppColors.primary,
             borderRadius: BorderRadius.circular(AppSizes.radiusMd),
@@ -130,8 +131,8 @@ class _PrimaryActionButtonState extends State<PrimaryActionButton>
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(widget.icon, color: Colors.white, size: 18),
-              const SizedBox(width: 8),
+              Icon(widget.icon, color: Colors.white, size: 18.dx),
+              SizedBox(width: 8.dx),
               Text(widget.label,
                   style: AppTextStyles.bodyMdMedium
                       .copyWith(color: Colors.white)),

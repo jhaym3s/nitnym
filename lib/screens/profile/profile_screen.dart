@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/images.dart';
 import '../../blocs/banking/banking_bloc.dart';
 import '../../blocs/settings/settings_bloc.dart';
@@ -18,26 +19,26 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+              padding: EdgeInsets.fromLTRB(20.dx, 16.dy, 20.dx, 0),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      width: 38,
-                      height: 38,
+                      width: 38.dx,
+                      height: 38.dx,
                       decoration: BoxDecoration(
                         color: AppColors.surfaceElevated,
                         borderRadius: BorderRadius.circular(AppSizes.radiusSm),
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.arrow_back_ios_new_rounded,
                         color: AppColors.textPrimary,
-                        size: 18,
+                        size: 18.dx,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 14),
+                  SizedBox(width: 14.dx),
                   const Text('Profile', style: AppTextStyles.headingLg),
                 ],
               ),
@@ -53,11 +54,11 @@ class ProfileScreen extends StatelessWidget {
                       buildWhen: (p, c) => p.user != c.user,
                       builder: (_, state) => Container(
                         color: AppColors.surface,
-                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+                        padding: EdgeInsets.fromLTRB(20.dx, 20.dy, 20.dx, 24.dy),
                         child: Row(
                           children: [
                               _AvatarWidget(name: state.user.name),
-                            const SizedBox(width: 11),
+                            SizedBox(width: 11.dx),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,15 +69,15 @@ class ProfileScreen extends StatelessWidget {
                                         state.user.name,
                                         style: AppTextStyles.bodyMd,
                                       ),
-                                      const SizedBox(width: 11),
+                                      SizedBox(width: 11.dx),
                                       Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 7,
-                                      vertical: 2,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 7.dx,
+                                      vertical: 2.dy,
                                     ),
                                     decoration: BoxDecoration(
                                       color: Color(0xff272729),
-                                      borderRadius: BorderRadius.circular(24),
+                                      borderRadius: BorderRadius.circular(24.dx),
                                     ),
                                     child: Text(
                                       state.user.role,
@@ -87,7 +88,7 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                     ],
                                   ),
-                                  const SizedBox(height: 4),
+                                  SizedBox(height: 4.dy),
                                   Text(
                                     state.user.email,
                                     style: AppTextStyles.smallSmMedium.copyWith(
@@ -106,7 +107,7 @@ class ProfileScreen extends StatelessWidget {
                     // const SizedBox(height: 20),
 
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.dx),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -114,19 +115,19 @@ class ProfileScreen extends StatelessWidget {
                             'Profile Settings',
                             style: AppTextStyles.headingX,
                           ),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           SettingsRow(
                             icon: ImageAssets.doc,
                             label: 'E-Statement',
                             onTap: () {},
                           ),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           SettingsRow(
                             icon: ImageAssets.card,
                             label: 'Credit Card',
                             onTap: () {},
                           ),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           SettingsRow(
                             icon: ImageAssets.setting,
                             label: 'Settings',
@@ -135,9 +136,9 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 36),
+                    SizedBox(height: 36.dy),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.dx),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -145,7 +146,7 @@ class ProfileScreen extends StatelessWidget {
                             'Notification',
                             style: AppTextStyles.headingX,
                           ),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           BlocBuilder<SettingsBloc, SettingsState>(
                             builder: (context, settings) => SettingsRow(
                               icon: ImageAssets.notification,
@@ -159,20 +160,20 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 36),
+                    SizedBox(height: 36.dy),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.dx),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text('More', style: AppTextStyles.headingX),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           SettingsRow(
                             icon: ImageAssets.language,
                             label: 'Language',
                             onTap: () {},
                           ),
-                          const SizedBox(height: 17),
+                          SizedBox(height: 17.dy),
                           SettingsRow(
                             icon: ImageAssets.country,
                             label: 'Country',
@@ -181,17 +182,17 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 36),
+                    SizedBox(height: 36.dy),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.dx),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 9,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.dx,
+                          vertical: 9.dy,
                         ),
                         decoration: BoxDecoration(
                           color: const Color(0xFFFFD4D4),
-                          borderRadius: BorderRadius.circular(2),
+                          borderRadius: BorderRadius.circular(2.dx),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -203,18 +204,18 @@ class ProfileScreen extends StatelessWidget {
                                 color: const Color(0xFF5A0000),
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(width: 8.dx),
                             SvgPicture.asset(
                               ImageAssets.logout,
-                              width: 16,
-                              height: 16,
+                              width: 16.dx,
+                              height: 16.dx,
                             ),
                           ],
                         ),
                       ),
                     ),
 
-                    const SizedBox(height: 40),
+                    SizedBox(height: 40.dy),
                   ],
                 ),
               ),

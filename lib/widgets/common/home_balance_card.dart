@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/constants.dart';
 import 'package:mintyn/core/images.dart';
 import 'package:mintyn/widgets/common/gradient_border.dart';
@@ -59,7 +60,7 @@ class _HomeBalanceCardState extends State<HomeBalanceCard>
                 color: const Color(0xFF1A1A1E),
               ),
               child: Padding(
-                    padding: const EdgeInsets.fromLTRB(32, 12, 15, 39),
+                    padding: EdgeInsets.fromLTRB(32.dx, 12.dy, 15.dx, 39.dy),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -68,11 +69,11 @@ class _HomeBalanceCardState extends State<HomeBalanceCard>
                           children: [
                             SvgPicture.asset(
                               ImageAssets.mastercard,
-                              width: 42,
-                              height: 32,
+                              width: 42.dx,
+                              height: 32.dy,
                             )],
                         ),
-                        const SizedBox(height: 6),
+                        SizedBox(height: 6.dy),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -86,7 +87,7 @@ class _HomeBalanceCardState extends State<HomeBalanceCard>
                                       color: Color(0xffE9E9EA),
                                     ),
                                   ),
-                                  const SizedBox(height: 10),
+                                  SizedBox(height: 10.dy),
                                   TweenAnimationBuilder<double>(
                                     tween: Tween(begin: 0, end: widget.balance),
                                     duration: const Duration(milliseconds: 900),
@@ -100,26 +101,26 @@ class _HomeBalanceCardState extends State<HomeBalanceCard>
                               ),
                             ),
                             Container(
-                              width: 38,
-                              height: 38,
+                              width: 38.dx,
+                              height: 38.dx,
                               decoration: const BoxDecoration(
                                 color: Color(0xff2E2E2E),
                                 shape: BoxShape.circle,
                               ),
                               child: widget.isLoading
-                                  ? const Padding(
-                                      padding: EdgeInsets.all(14),
-                                      child: CircularProgressIndicator(
+                                  ? Padding(
+                                      padding: EdgeInsets.all(14.dx),
+                                      child: const CircularProgressIndicator(
                                           strokeWidth: 2,
                                           color: AppColors.primary),
                                     )
-                                  : const Icon(Icons.qr_code_2_rounded,
-                                      color: AppColors.textPrimary, size: 24),
+                                  : Icon(Icons.qr_code_2_rounded,
+                                      color: AppColors.textPrimary, size: 24.dx),
                             ),
-                            SizedBox(width: 25)
+                            SizedBox(width: 25.dx)
                           ],
                         ),
-                        const SizedBox(height: 28),
+                        SizedBox(height: 28.dy),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -129,7 +130,7 @@ class _HomeBalanceCardState extends State<HomeBalanceCard>
                               onTap: widget.onAddCash,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 16.0),
+                              padding: EdgeInsets.only(right: 16.dx),
                               child: _BalanceButton(
                                 icon: Icons.arrow_outward_rounded,
                                 label: 'Send Money',
@@ -169,21 +170,21 @@ class MastercardLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     const double circle = 22;
     const double overlap = 8;
-    const double totalW = circle * 2 - overlap;
+    final double totalW = circle * 2 - overlap;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-          width: totalW,
-          height: circle,
+          width: totalW.dx,
+          height: circle.dy,
           child: Stack(
             children: [
               Positioned(
                 left: 0,
                 child: Container(
-                  width: circle,
-                  height: circle,
+                  width: circle.dx,
+                  height: circle.dy,
                   decoration: const BoxDecoration(
                     color: Color(0xFFEB001B),
                     shape: BoxShape.circle,
@@ -191,10 +192,10 @@ class MastercardLogo extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: circle - overlap,
+                left: (circle - overlap).dx,
                 child: Container(
-                  width: circle,
-                  height: circle,
+                  width: circle.dx,
+                  height: circle.dy,
                   decoration: BoxDecoration(
                     color: const Color(0xFFF79E1B),
                     shape: BoxShape.circle,
@@ -204,7 +205,7 @@ class MastercardLogo extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.dy),
         Text(
           'mastercard',
           style: AppTextStyles.smallSm.copyWith(
@@ -268,15 +269,15 @@ class _BalanceButtonState extends State<_BalanceButton>
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.primary,
-            borderRadius: BorderRadius.circular(3),
+            borderRadius: BorderRadius.circular(3.dx),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 14.dx, vertical: 10.dy),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(widget.icon, color: Colors.white, size: 16),
-                const SizedBox(width: 4),
+                Icon(widget.icon, color: Colors.white, size: 16.dx),
+                SizedBox(width: 4.dx),
                 Text(
                   widget.label,
                   style: AppTextStyles.bodyXX,

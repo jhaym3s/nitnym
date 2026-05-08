@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mintyn/blocs/banking/banking_bloc.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/constants.dart';
 
 class FilterTabs extends StatelessWidget {
@@ -14,12 +15,12 @@ class FilterTabs extends StatelessWidget {
           label: 'Weekly',
           isSelected: selected == TransactionFilter.weekly,
           onTap: () => onChanged(TransactionFilter.weekly)),
-      const SizedBox(width: 14),
+      SizedBox(width: 14.dx),
       _Tab(
           label: 'Monthly',
           isSelected: selected == TransactionFilter.monthly,
           onTap: () => onChanged(TransactionFilter.monthly)),
-      const SizedBox(width: 14),
+      SizedBox(width: 14.dx),
       _Tab(
           label: 'Today',
           isSelected: selected == TransactionFilter.today,
@@ -41,7 +42,7 @@ class _Tab extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: AppDurations.fast,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+        padding: EdgeInsets.symmetric(horizontal: 20.dx, vertical: 6.dy),
         decoration: BoxDecoration(
           color:  Color(0xFF232325),
           borderRadius: BorderRadius.circular(AppSizes.radiusX),

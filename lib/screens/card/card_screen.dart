@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/images.dart';
 import 'package:mintyn/widgets/cards/card_type_tabs.dart';
 import '../../blocs/card/card_bloc.dart';
@@ -39,24 +40,24 @@ class _CardScreenState extends State<CardScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+              padding: EdgeInsets.fromLTRB(20.dx, 16.dy, 20.dx, 0),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      width: 38,
-                      height: 38,
+                      width: 38.dx,
+                      height: 38.dx,
                       decoration: BoxDecoration(
                         color: AppColors.surfaceElevated,
                         borderRadius:
                             BorderRadius.circular(AppSizes.radiusSm),
                       ),
-                      child: const Icon(Icons.arrow_back_ios_new_rounded,
-                          color: AppColors.textPrimary, size: 18),
+                      child: Icon(Icons.arrow_back_ios_new_rounded,
+                          color: AppColors.textPrimary, size: 18.dx),
                     ),
                   ),
-                  const SizedBox(width: 14),
+                  SizedBox(width: 14.dx),
                   BlocBuilder<CardBloc, CardState>(
                     builder: (_, state) => Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +78,7 @@ class _CardScreenState extends State<CardScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.dy),
             Expanded(
               child: BlocBuilder<CardBloc, CardState>(
                 builder: (context, state) {
@@ -90,7 +91,7 @@ class _CardScreenState extends State<CardScreen> {
                       children: [
                         Padding(
                           padding:
-                              const EdgeInsets.symmetric(horizontal: 20),
+                              EdgeInsets.symmetric(horizontal: 20.dx),
                           child: CardTypeTabs(
                             selected: state.selectedCardType,
                             onChanged: (type) {
@@ -101,9 +102,9 @@ class _CardScreenState extends State<CardScreen> {
                             },
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        SizedBox(height: 30.dy),
                         SizedBox(
-                          height: AppSizes.bankCardHeight + 24,
+                          height: AppSizes.bankCardHeight + 24.dy,
                           child: PageView.builder(
                             controller: _pageController,
                             itemCount: cards.length,
@@ -121,8 +122,8 @@ class _CardScreenState extends State<CardScreen> {
                                 child: AnimatedPadding(
                                   duration: AppDurations.normal,
                                   padding: EdgeInsets.only(
-                                    top: isSelected ? 0 : 16,
-                                    bottom: isSelected ? 0 : 16,
+                                    top: isSelected ? 0 : 16.dy,
+                                    bottom: isSelected ? 0 : 16.dy,
                                   ),
                                   child: BankCardWidget(
                                     card: cards[i],
@@ -136,33 +137,33 @@ class _CardScreenState extends State<CardScreen> {
                         ),
                         if (cards.length > 1)
                           Padding(
-                            padding: const EdgeInsets.only(top: 15),
+                            padding: EdgeInsets.only(top: 15.dy),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(cards.length, (i) {
                                 return AnimatedContainer(
                                   duration: AppDurations.normal,
                                   width: i == state.selectedCardIndex
-                                      ? 28
-                                      : 8,
-                                  height: 8,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 2),
+                                      ? 28.dx
+                                      : 8.dx,
+                                  height: 8.dy,
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal: 2.dx),
                                   decoration: BoxDecoration(
                                     color: i == state.selectedCardIndex
                                         ? AppColors.primary
                                         : Color(0xff9C9C9D),
-                                    borderRadius: BorderRadius.circular(4),
+                                    borderRadius: BorderRadius.circular(4.dx),
                                   ),
                                 );
                               }),
                             ),
                           ),
-                        const SizedBox(height: 22),
+                        SizedBox(height: 22.dy),
                         if (selected != null)
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.dx),
                             child: Row(
                               mainAxisAlignment:
                                   MainAxisAlignment.spaceEvenly,
@@ -196,19 +197,19 @@ class _CardScreenState extends State<CardScreen> {
                               ],
                             ),
                           ),
-                        const SizedBox(height: 28),
+                        SizedBox(height: 28.dy),
                         const Divider(color: AppColors.border, height: 1),
-                        const SizedBox(height: 24),
+                        SizedBox(height: 24.dy),
                         if (selected != null) ...[
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.dx),
                             child: Text('Card Settings',
                                 style: AppTextStyles.heading28),
                           ),
-                          const SizedBox(height: 14),
+                          SizedBox(height: 14.dy),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.dx),
                             child: Column(children: [
                               SettingsRow(
                                 icon: ImageAssets.changePin,
@@ -216,7 +217,7 @@ class _CardScreenState extends State<CardScreen> {
                                 toggleValue: true,
                                 onToggle: (_) {},
                               ),
-                              const SizedBox(height: 17),
+                              SizedBox(height: 17.dy),
                               SettingsRow(
                                 icon: ImageAssets.qrPayment,
                                 label: 'QR Payment',
@@ -225,7 +226,7 @@ class _CardScreenState extends State<CardScreen> {
                                     .read<CardBloc>()
                                     .add(const CardQrPaymentToggled()),
                               ),
-                              const SizedBox(height: 17),
+                              SizedBox(height: 17.dy),
                               SettingsRow(
                                 icon: ImageAssets.onlineShopping,
                                 label: 'Online Shopping',
@@ -236,7 +237,7 @@ class _CardScreenState extends State<CardScreen> {
                                     .add(
                                         const CardOnlineShoppingToggled()),
                               ),
-                              const SizedBox(height: 17),
+                              SizedBox(height: 17.dy),
                               
                               SettingsRow(
                                 icon: ImageAssets.cardTransaction,
@@ -246,7 +247,7 @@ class _CardScreenState extends State<CardScreen> {
                                   const CardTransactionScreen(),
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: 10.dy),
                               SettingsRow(
                                 icon: ImageAssets.tapPay,
                                 label: 'Tap Pay',
@@ -257,7 +258,7 @@ class _CardScreenState extends State<CardScreen> {
                               ),
                             ]),
                           ),
-                          const SizedBox(height: 32),
+                          SizedBox(height: 32.dy),
                         ],
                       ],
                     ),
@@ -295,14 +296,14 @@ class _CardAction extends StatelessWidget {
       child: Column(children: [
         AnimatedContainer(
           duration: AppDurations.normal,
-          width: 46,
-          height: 46,
+          width: 46.dx,
+          height: 46.dx,
           decoration: BoxDecoration(
             border: Border.all(
                 color: isActive
                     ? AppColors.primary.withOpacity(0.5)
                     : Color(0xff272729),
-                width: 1),
+                width: 1.dx),
             color: isActive
                 ? AppColors.primary.withOpacity(0.2)
                 : AppColors.surfaceElevated,
@@ -310,9 +311,9 @@ class _CardAction extends StatelessWidget {
           ),
           child: Icon(icon,
               color: isActive ? AppColors.primary : AppColors.textPrimary,
-              size: 22),
+              size: 22.dx),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.dy),
         Text(label, style: AppTextStyles.smallSmMedium),
       ]),
     );

@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:mintyn/core/dimensions.dart';
 import '../../core/constants.dart';
 
 class SpendingChart extends StatefulWidget {

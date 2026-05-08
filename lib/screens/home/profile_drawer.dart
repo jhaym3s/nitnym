@@ -5,6 +5,7 @@ import 'package:mintyn/core/images.dart';
 import '../../blocs/banking/banking_bloc.dart';
 import '../../blocs/settings/settings_bloc.dart';
 import '../../core/constants.dart';
+import '../../core/dimensions.dart';
 import '../../widgets/common/settings_row.dart';
 
 class ProfileDrawer extends StatelessWidget {
@@ -31,14 +32,14 @@ class ProfileDrawer extends StatelessWidget {
               BlocBuilder<BankingBloc, BankingState>(
                 buildWhen: (p, c) => p.user != c.user,
                 builder: (_, state) => Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 24, 20, 8),
+                  padding: EdgeInsets.fromLTRB(20.dx, 24.dy, 20.dx, 8.dy),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GestureDetector(
                         onTap: onNavigateProfile,
                         child: _DrawerAvatar()),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8.dy),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -50,15 +51,15 @@ class ProfileDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              const Divider(color: AppColors.border, height: 1),
-              const SizedBox(height: 8),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+               Divider(color: AppColors.border, height: 1.dy),
+              SizedBox(height: 8.dy),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.dx),
                 child: Text('Profile Settings', style: AppTextStyles.headingX),
               ),
-              const SizedBox(height: 17),
+              SizedBox(height: 17.dy),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: Column(
                   children: [
                     SettingsRow(
@@ -66,13 +67,13 @@ class ProfileDrawer extends StatelessWidget {
                       label: 'E-Statement',
                       onTap: () => Navigator.pop(context),
                     ),
-                    const SizedBox(height: 17),
+                    SizedBox(height: 17.dy),
                     SettingsRow(
                       icon: ImageAssets.card,
                       label: 'Credit Card',
                       onTap: onNavigateCard,
                     ),
-                    const SizedBox(height: 17),
+                    SizedBox(height: 17.dy),
                     SettingsRow(
                       icon: ImageAssets.setting,
                       label: 'Settings',
@@ -81,14 +82,14 @@ class ProfileDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 34),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              SizedBox(height: 34.dy),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.dx),
                 child: Text('Notification', style: AppTextStyles.headingX),
               ),
-              const SizedBox(height: 17),
+              SizedBox(height: 17.dy),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: BlocBuilder<SettingsBloc, SettingsState>(
                   builder: (context, settings) => SettingsRow(
                     icon: ImageAssets.notification,
@@ -100,14 +101,14 @@ class ProfileDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 34),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              SizedBox(height: 34.dy),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.dx),
                 child: Text('More', style: AppTextStyles.headingX),
               ),
-              const SizedBox(height: 17),
+              SizedBox(height: 17.dy),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: Column(
                   children: [
                     SettingsRow(
@@ -115,7 +116,7 @@ class ProfileDrawer extends StatelessWidget {
                       label: 'Language',
                       onTap: () {},
                     ),
-                    const SizedBox(height: 17),
+                    SizedBox(height: 17.dy),
                     SettingsRow(
                       icon: ImageAssets.country,
                       label: 'Country',
@@ -124,13 +125,12 @@ class ProfileDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 26),
+              SizedBox(height: 26.dy),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: EdgeInsets.symmetric(horizontal: 16.dx),
                 child: _LogoutButton(onTap: () {}),
               ),
-
-              const SizedBox(height: 40),
+              SizedBox(height: 40.dy),
             ],
           ),
         ),
@@ -149,8 +149,8 @@ class _DrawerAvatar extends StatelessWidget {
         Stack(
           children: [
             Container(
-              width: 59,
-              height: 59,
+              width: 59.dx,
+              height: 59.dy,
               decoration: BoxDecoration(
                 image: const DecorationImage(
                   image: AssetImage(ImageAssets.avatar),
@@ -163,8 +163,8 @@ class _DrawerAvatar extends StatelessWidget {
               bottom: 0,
               right: 0,
               child: Container(
-                width: 16,
-                height: 16,
+                width: 16.dx,
+                height: 16.dy,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: Color(0xffE6F0FF),
@@ -172,8 +172,8 @@ class _DrawerAvatar extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   ImageAssets.edit,
-                  width: 7,
-                  height: 7,
+                  width: 7.dx,
+                  height: 7.dy,
                 ),
               ),
             ),
@@ -226,7 +226,7 @@ class _LogoutButtonState extends State<_LogoutButton>
       child: ScaleTransition(
         scale: _ctrl,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+          padding: EdgeInsets.symmetric(horizontal: 20.dx, vertical: 13.dy),
           decoration: BoxDecoration(
             color: const Color(0xFFFFD4D4),
             borderRadius: BorderRadius.circular(AppSizes.radiusMd),
@@ -241,11 +241,11 @@ class _LogoutButtonState extends State<_LogoutButton>
                   color: const Color(0xFF5A0000),
                 ),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8.dx),
               SvgPicture.asset(
                 ImageAssets.logout,
-                width: 16,
-                height: 16,
+                width: 16.dx,
+                height: 16.dy,
               ),
             ],
           ),

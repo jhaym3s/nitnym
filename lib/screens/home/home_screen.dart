@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mintyn/core/dimensions.dart';
 import 'package:mintyn/core/images.dart';
 import 'package:mintyn/widgets/common/home_balance_card.dart';
 import 'package:mintyn/widgets/common/home_filter_tab.dart';
@@ -57,13 +58,13 @@ class _HomeScreenState extends State<HomeScreen>
         leading: GestureDetector(
           onTap: () => _scaffoldKey.currentState?.openDrawer(),
           child: Container(
-            width: 38,
-            height: 38,
+            width: 38.dx,
+            height: 38.dx,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppSizes.radiusSm),
             ),
-            child: const Icon(Icons.menu_rounded,
-                color: AppColors.textPrimary, size: 20),
+            child: Icon(Icons.menu_rounded,
+                color: AppColors.textPrimary, size: 20.dx),
           ),
         ),
         title: _buildTopBar(),
@@ -89,11 +90,11 @@ class _HomeScreenState extends State<HomeScreen>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 48),
+                    SizedBox(height: 48.dy),
                     _buildBalanceCard(),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32.dy),
                     _buildQuickActions(),
-                    const SizedBox(height: 32),
+                    SizedBox(height: 32.dy),
                     _buildTransactionSection(),
                   ],
                 ),
@@ -111,11 +112,11 @@ class _HomeScreenState extends State<HomeScreen>
       child: SlideTransition(
         position: _headerSlide,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 14),
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 14.dy),
           child: Row(
             children: [
               SizedBox(
-                width: 38,
+                width: 38.dx,
                
               ),
               BlocBuilder<BankingBloc, BankingState>(
@@ -134,9 +135,9 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               const Spacer(),
               CircleAvatar(
-                radius: 17,
+                radius: 17.dx,
                 backgroundColor: AppColors.surfaceElevated,
-                child: SvgPicture.asset(ImageAssets.notification, width: 18, height: 18, color: AppColors.textPrimary,),
+                child: SvgPicture.asset(ImageAssets.notification, width: 18.dx, height: 18.dx, color: AppColors.textPrimary,),
               ),
               
             ],
@@ -149,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget _buildBalanceCard() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.dx),
       child: BlocBuilder<BankingBloc, BankingState>(
         buildWhen: (p, c) =>
             p.user.totalBalance != c.user.totalBalance ||
@@ -167,8 +168,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget _buildQuickActions() {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      margin: EdgeInsets.symmetric(horizontal: 20.dx),
+      padding: EdgeInsets.symmetric(vertical: 16.dy),
       decoration: BoxDecoration(
         color: AppColors.surface,
         border: Border.all(color: AppColors.border),
@@ -180,8 +181,8 @@ class _HomeScreenState extends State<HomeScreen>
           QuickActionButton(
               icon: SvgPicture.asset(
                           ImageAssets.billPay,
-                          width: 20,
-                          height: 20,
+                          width: 20.dx,
+                          height: 20.dx,
                         ),
               label: 'Bill Pay',
               onTap: () {}),
@@ -189,8 +190,8 @@ class _HomeScreenState extends State<HomeScreen>
           QuickActionButton(
               icon: SvgPicture.asset(
                           ImageAssets.donations,
-                          width: 22,
-                          height: 21,
+                          width: 22.dx,
+                          height: 21.dy,
                         ),
               label: 'Donations',
               onTap: () {}),
@@ -198,8 +199,8 @@ class _HomeScreenState extends State<HomeScreen>
           QuickActionButton(
               icon: SvgPicture.asset(
                           ImageAssets.deposit,
-                          width: 19,
-                          height: 19,
+                          width: 19.dx,
+                          height: 19.dx,
                         ),
               label: 'Deposit',
               onTap: () {}),
@@ -207,8 +208,8 @@ class _HomeScreenState extends State<HomeScreen>
           QuickActionButton(
               icon: SvgPicture.asset(
                           ImageAssets.more,
-                          width: 18,
-                          height: 18,
+                          width: 18.dx,
+                          height: 18.dx,
                         ),
               label: 'More',
               onTap: () {}),
@@ -219,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   Widget _buildTransactionSection() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.dx),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -233,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen>
                       .copyWith(color: Color(0xff6BA6FF))),
             ],
           ),
-          const SizedBox(height: 11),
+          SizedBox(height: 11.dy),
           BlocBuilder<BankingBloc, BankingState>(
             buildWhen: (p, c) => p.filter != c.filter,
             builder: (context, state) => FilterTabs(
@@ -242,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen>
                   context.read<BankingBloc>().add(BankingFilterChanged(f)),
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.dy),
           BlocBuilder<BankingBloc, BankingState>(
             buildWhen: (p, c) =>
                 p.transactions != c.transactions ||
@@ -250,9 +251,9 @@ class _HomeScreenState extends State<HomeScreen>
             builder: (_, state) {
               final txs = state.allTransactions;
               if (txs.isEmpty) {
-                return const Center(
+                return Center(
                   child: Padding(
-                    padding: EdgeInsets.all(32),
+                    padding: EdgeInsets.all(32.dx),
                     child: Text('No transactions',
                         style: AppTextStyles.smallMd),
                   ),
@@ -283,7 +284,7 @@ class _VerticalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Container(width: 1, height: 40, color: AppColors.border);
+      Container(width: 1.dx, height: 40.dy, color: AppColors.border);
 }
 
 

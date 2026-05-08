@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mintyn/core/dimensions.dart';
 
 class GradientBorderPainter extends CustomPainter {
   const GradientBorderPainter({required this.borderRadius});

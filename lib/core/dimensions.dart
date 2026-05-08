@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Dims {
   const Dims._();
-  static Size designSize = const Size(390, 844);
+  static Size designSize = const Size(430, 932);
   static late Size deviceSize;
 
   static void setSize(MediaQueryData media) {

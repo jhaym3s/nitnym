@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:mintyn/core/dimensions.dart';
 
 
 class GradientBorderBlurCard extends StatelessWidget {
