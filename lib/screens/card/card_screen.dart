@@ -203,7 +203,7 @@ class _CardScreenState extends State<CardScreen> {
                           const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 20),
                             child: Text('Card Settings',
-                                style: AppTextStyles.headingSm),
+                                style: AppTextStyles.heading28),
                           ),
                           const SizedBox(height: 14),
                           Padding(
@@ -216,7 +216,7 @@ class _CardScreenState extends State<CardScreen> {
                                 toggleValue: true,
                                 onToggle: (_) {},
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 17),
                               SettingsRow(
                                 icon: ImageAssets.qrPayment,
                                 label: 'QR Payment',
@@ -225,7 +225,7 @@ class _CardScreenState extends State<CardScreen> {
                                     .read<CardBloc>()
                                     .add(const CardQrPaymentToggled()),
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 17),
                               SettingsRow(
                                 icon: ImageAssets.onlineShopping,
                                 label: 'Online Shopping',
@@ -236,7 +236,7 @@ class _CardScreenState extends State<CardScreen> {
                                     .add(
                                         const CardOnlineShoppingToggled()),
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 17),
                               
                               SettingsRow(
                                 icon: ImageAssets.cardTransaction,

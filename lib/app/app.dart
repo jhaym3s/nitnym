@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mintyn/core/dimensions.dart';
 import '../blocs/banking/banking_bloc.dart';
 import '../blocs/card/card_bloc.dart';
 import '../blocs/settings/settings_bloc.dart';
@@ -24,6 +25,11 @@ class BankingApp extends StatelessWidget {
         title: 'Banking App',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.dark,
+        builder: (context, widget) {
+            final media = MediaQuery.of(context);
+            Dims.setSize(media);
+            return widget!;
+          },
         home: const HomeScreen(),
       ),
     );

@@ -102,6 +102,13 @@ abstract class AppTextStyles {
     color: AppColors.textPrimary,
   );
 
+  static const TextStyle heading28 = TextStyle(
+    fontFamily: _font,
+    fontSize: 28,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimary,
+  );
+
   static const TextStyle headingXs = TextStyle(
     fontFamily: _font,
     fontSize: 20,
